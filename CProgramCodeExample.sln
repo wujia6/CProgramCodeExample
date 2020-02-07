@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "复习1", "复习1\复习1.vcxproj", "{485A42DD-C076-4B25-9B7E-4FAA7016E008}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "远程教学1", "RemoteTeaching1-巩固重点\RemoteTeaching1-巩固重点.vcxproj", "{47B4021B-753D-47B9-9614-1A669C1E4614}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{485A42DD-C076-4B25-9B7E-4FAA7016E008}.Debug|x64.ActiveCfg = Debug|x64
-		{485A42DD-C076-4B25-9B7E-4FAA7016E008}.Debug|x64.Build.0 = Debug|x64
-		{485A42DD-C076-4B25-9B7E-4FAA7016E008}.Debug|x86.ActiveCfg = Debug|Win32
-		{485A42DD-C076-4B25-9B7E-4FAA7016E008}.Debug|x86.Build.0 = Debug|Win32
-		{485A42DD-C076-4B25-9B7E-4FAA7016E008}.Release|x64.ActiveCfg = Release|x64
-		{485A42DD-C076-4B25-9B7E-4FAA7016E008}.Release|x64.Build.0 = Release|x64
-		{485A42DD-C076-4B25-9B7E-4FAA7016E008}.Release|x86.ActiveCfg = Release|Win32
-		{485A42DD-C076-4B25-9B7E-4FAA7016E008}.Release|x86.Build.0 = Release|Win32
+		{47B4021B-753D-47B9-9614-1A669C1E4614}.Debug|x64.ActiveCfg = Debug|x64
+		{47B4021B-753D-47B9-9614-1A669C1E4614}.Debug|x64.Build.0 = Debug|x64
+		{47B4021B-753D-47B9-9614-1A669C1E4614}.Debug|x86.ActiveCfg = Debug|Win32
+		{47B4021B-753D-47B9-9614-1A669C1E4614}.Debug|x86.Build.0 = Debug|Win32
+		{47B4021B-753D-47B9-9614-1A669C1E4614}.Release|x64.ActiveCfg = Release|x64
+		{47B4021B-753D-47B9-9614-1A669C1E4614}.Release|x64.Build.0 = Release|x64
+		{47B4021B-753D-47B9-9614-1A669C1E4614}.Release|x86.ActiveCfg = Release|Win32
+		{47B4021B-753D-47B9-9614-1A669C1E4614}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
