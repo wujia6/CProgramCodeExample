@@ -15,8 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="源.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
+    <None Include="..\..\..\..\..\C语言\远程教学课件\课件.docx">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>

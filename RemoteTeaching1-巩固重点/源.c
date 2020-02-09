@@ -32,7 +32,6 @@ void main()
 
 	char input = getchar();
 	P(C, input);
-	scanf("%d %c %f",)
 
 	system("pause");
 }
