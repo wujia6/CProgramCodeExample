@@ -6,15 +6,16 @@
 
 void main()
 {
-	//常量
-	//1.整型常量 2.字符型常量 3.浮点型常量 4.符号常量
+	//常量 1.整型常量 2.字符型常量 3.浮点型常量 4.符号常量
 	const int NUM = 10;
 	const char CH = 'A';
 	const float PRICE = 3.14;
 	P(D, NUM);
 	P(C, CH);
 	P(F, PRICE);
+
 	puts("");
+
 	int num = 3;
 	char ch = 'a';
 	float price = 12.5;
