@@ -2,6 +2,5 @@
 
 void main()
 {
-	
-	system("pause");
+
 }
