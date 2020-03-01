@@ -1,44 +1,57 @@
 #include <stdio.h>
 
-int getMax(int *pa, int *pb)
+int getMax(int *p1, int *p2)
 {
-	return *pa > *pb ? pa : pb;
+	return *p1 > *p2 ? p1 : p2;
 }
 
-void mainss()
+void maintttt()
 {
-	//1.定义指针1
-	int a = 10, *pa;
-	pa = &a;
-	//2.定义指针2
-	int b = 20, *pb = &b;
-	//3.引用指针1
+	#pragma region 指针定义初始化引用
+	//1.定义
+	int a=10, *p;
+	p = &a;
+	int b = 20, *ptr = &b;
+
+	//p+sizeof(int)	//x86占2个字节，x64占4个字节
+
+	//2.引用指针变量
 	int c = 200, x, *pc = &c;
 	x = *pc;
-	//4.改变指针
-	int i = 'a', j = 'b', *pi = &i, *pj = &j;
-	pi = pj;	//改变指向
-	*pi = *pj;	//改变值
-	//5.表达式
+
+	int i = 10, j = 20, *pa = &i, *pb = &j;
+	pa = pb;
+	printf_s("%d", *pa);
+	puts("");
 	int s = 10, k, *ps = &s;
 	*ps++; *ps--;
 	k = *ps + 10;
-	//指针作为函数参数
-	int num = getMax(pa, pb);
-	//printf_s("%x", num);
-	//数组指针
-	int arr[10] = { 0,1,2,3,4,5,6,7,8,9 }, *parr;
-	//下标法
-	/*for (int i = 0; i < 10; i++)
+	printf_s("%d", k);
+	//puts("");
+	#pragma endregion
+
+	#pragma region 指针变量作为形参
+	int res = getMax(pa, pb);
+	printf_s("%x\n", res);
+	#pragma endregion
+
+	#pragma region 数组指针（一维数组）
+	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 }, *parr;
+	//1.下标法
+	for (int i = 0; i < 10; i++)
 	{
-		pirntf_s("%d", arr[i]);
-	}*/
-	//指针法
-	//int arr1 = *(parr + 1);
+		printf_s("%d", arr[i]);
+	}
+	puts("");
+	//2.指针法
 	for (parr = arr; parr < arr + 10; parr++)
 	{
-		printf_s("值：%d,地址：%x\n", *parr, parr);
+		printf_s("%d", *parr);
 	}
+
+	#pragma endregion
+
+
 	system("pause");
 }
 

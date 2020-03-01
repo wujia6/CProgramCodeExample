@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void main()
+void mainwww()
 {
 	#pragma region 基础知识
 	//1.数组首地址
