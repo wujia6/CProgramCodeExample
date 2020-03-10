@@ -27,5 +27,25 @@
     <ClCompile Include="section4.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="section5.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="section6.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="section7.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="section8.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="utils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

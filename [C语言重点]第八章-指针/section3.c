@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#define P printf_s
+#define D "%d\n"
 
 //示例1
 int findCH(char *pstr)
@@ -28,21 +30,23 @@ void strCopy(char *pstr1, char *pstr2)
 	while (*pstr2++ = *pstr1++);
 }
 
-void maindddd()
+void main3333()
 {
 	//1.字符串指针定义
 	char str[] = "HongXiang School";
-	char *string1 = "C Program Diesgn", *string2="";
+	char *pstr; pstr = "C Program Diesgn";
+	char *string1 = "C Program Diesgn", *string2="HongXiang School";
 
-	for (int i = 0; i < strlen(str); i++)
+	/*for (int i = 0; i < strlen(str); i++)
 	{
-		printf_s("%c", string1[i]);
+		printf_s("%c", pstr[i]);
 	}
-	puts("");
-	//puts(string);
+	puts("");*/
+	//puts(pstr);
 
 	//2.修改字符串指针
-	//str[4] = 'k';
+	str[4] = 'k';
+	//string1[4] = 'k';
 	//puts(str);
 
 	//字符串指针代码示例
@@ -50,14 +54,14 @@ void maindddd()
 	//【VS代码示例】将指针变量指向一个格式字符串，并printf函数中使用格式字符串。
 	//【VS代码示例】要求把一个字符串的内容复制到另一个字符串中，字符串指针作为函数参数使用(不能使用sring.h函数库)。*/
 	//调用示例1
-	if (findCH(string1))
+	if (findCH(str))
 		puts("包含字符'k'");
 	else
 		puts("不包含字符'k'");
-
+	puts("");
 	//调用示例2
 	formatter();
-
+	puts("");
 	//调用示例3
 	strCopy(string1, string2);
 	puts(string2);

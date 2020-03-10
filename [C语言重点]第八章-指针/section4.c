@@ -4,7 +4,7 @@
 char *getWeekDay(int);
 int getMaxNumber(int, int);
 
-void main()
+int main_section4()
 {
 	#pragma region 指针函数
 	puts("===================指针函数=======================");
@@ -31,6 +31,7 @@ void main()
 	#pragma endregion
 
 	system("pause");
+	return 0;
 }
 
 //示例1
