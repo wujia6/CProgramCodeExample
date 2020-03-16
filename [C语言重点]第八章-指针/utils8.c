@@ -3,6 +3,15 @@
 #include "utils.h"
 
 #pragma region 函数列表
+//创建链表头
+list *createLinks()
+{
+	list *pHead = malloc(sizeof(list)),
+		*pLst = pHead;
+	pLst->size = 0;
+	pLst->link = NULL;
+	return pLst;
+}
 
 //创建节点
 node *createNode(int key, char *msg)
@@ -13,6 +22,19 @@ node *createNode(int key, char *msg)
 	pNode->message = msg;
 	pNode->next = NULL;
 	return pNode;
+}
+
+//获取链表长度
+int getLength(node *pHead)
+{
+	int len = 0;
+	node *tmp = pHead;
+	while (tmp != NULL)
+	{
+		tmp = tmp->next;
+		len++;
+	}
+	return len;
 }
 
 //追加节点
@@ -28,39 +50,25 @@ void appendNode(node *pHead, node *pNode)
 node *insertNode(node *pHead, node *pNode)
 {
 	int len = getLength(pHead);
-	if (pNode->key==1)	//1.插入到头部
+	if (pNode->key == 1) //插入首元节点位置
 	{
-		pHead->message = "普通节点";
 		pNode->next = pHead;
 		pHead = pNode;
 		checkPrimaries(pHead);
 	}
-	else if (pNode->key > 1 && pNode->key < len)	//2.插入到中间
+	else if (pNode->key > 1 && pNode->key < len) //插入中间节点位置
 	{
-		node *perv = findNode(pHead, pNode->key - 1);	//获取前驱节点
-		pNode->next = perv->next;
-		perv->next = pNode;
+		node *before = findNode(pHead, pNode->key - 1);
+		pNode->next = before->next;
+		before->next = pNode;
 		checkPrimaries(pHead);
 	}
-	else //3.插入到末端
+	else //插入末端节点
 	{
 		node *last = findNode(pHead, len);
 		last->next = pNode;
 	}
 	return pHead;
-}
-
-//获取链表长度
-int getLength(node *pHead)
-{
-	int count = 0;
-	node *tmp = pHead;
-	while (tmp != NULL)
-	{
-		tmp = tmp->next;
-		count++;
-	}
-	return count;
 }
 
 //查找节点
@@ -76,38 +84,14 @@ node *findNode(node *pHead, int index)
 	return NULL;
 }
 
-//打印链表
-void displayNodes(node *pHead)
-{
-	node *tmp = pHead;
-	while (tmp != NULL)
-	{
-		printf_s("key:%d,message:%s\n", tmp->key, tmp->message);
-		tmp = tmp->next;
-	}
-}
-
-//维护主键（key）
-void checkPrimaries(node *pHead)
-{
-	int index = 1;
-	node *tmp = pHead;
-	while (tmp != NULL)
-	{
-		tmp->key = index;
-		tmp = tmp->next;
-		index++;
-	}
-}
-
 //删除节点
 int removeNode(node *pHead, int index)
 {
-	node *del, *perv = findNode(pHead, index - 1);
-	if (perv == NULL)
+	node *del, *prev = findNode(pHead, index - 1);
+	if (prev ==NULL)
 		return 0;
-	del = perv->next;
-	perv->next = del->next;
+	del = prev->next;
+	prev->next == del->next;
 	free(del);
 	return 1;
 }
@@ -122,4 +106,27 @@ int updateNode(node *pHead, int index, char *msg)
 	return 1;
 }
 
+//打印节点
+void displayNodes(node *pHead)
+{
+	node *tmp = pHead;
+	while (tmp != NULL)
+	{
+		printf_s("key:%d,message:%s\n", tmp->key, tmp->message);
+		tmp = tmp->next;
+	}
+}
+
+//检查key键
+void checkPrimaries(node *pHead)
+{
+	node *tmp = pHead;
+	int i = 1;
+	while (tmp != NULL)
+	{
+		tmp->key = i;
+		tmp = tmp->next;
+		i++;
+	}
+}
 #pragma endregion

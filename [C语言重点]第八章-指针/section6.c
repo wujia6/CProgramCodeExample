@@ -1,47 +1,47 @@
 #include <stdio.h>
 #include <string.h>
 
-void sortAsc(void (*pf)(), char *pc[], int len);
-void printfs(char *pc[], int len);
+//函数原型
+void storAsc(char *arr[], int);
 
 int main666()
 {
 	#pragma region 指针数组
 	//示例：定义指针数组
-	int *parr[10];
-	//示例1：国家名称按字母顺序排序并输出
+	int arr[][3] = { 9,8,7, 6,5,4, 3,2,1 },
+		*parr[3] = { arr[0], arr[1], arr[2] },
+		num = *(parr[1] + 1);
+	printf_s("%d\n", num);
+	puts("");
+
+	char string[2][10] = { "CHINA", "AMERICA" };
+	// 国家名称按字母顺序排序并输出
 	char *countries[] = { "CHINA", "AMERICA", "AUSTRALIA", "FRANCE", "GERMAN" };
-	sortAsc(printfs, countries, 5);
+	storAsc(countries, 5);
+	for (int i = 0; i < 5; i++)
+	{
+		printf_s("%s\n", countries[i]);
+	}
+	#pragma endregion
 
 	system("pause");
 	return 0;
-	#pragma endregion
 }
 
 //示例1
-void sortAsc(void (*pf)(), char *pc[], int len)
+void storAsc(char *arr[], int len)
 {
 	//冒泡排序
 	for (int i = 0; i < len - 1; i++)
 	{
 		for (int j = i + 1; j < len; j++)
 		{
-			if (strcmp(pc[i], pc[j]) > 0)
+			if (strcmp(arr[i], arr[j]) > 0)
 			{
-				char *pt = pc[i];
-				pc[i] = pc[j];
-				pc[j] = pt;
+				char *tmp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tmp;
 			}
 		}
-	}
-	(*pf)(pc, len);
-}
-
-//示例1
-void printfs(char *pc[], int len)
-{
-	for (int i = 0; i < len; i++)
-	{
-		printf_s("%s\n", pc[i]);
 	}
 }
