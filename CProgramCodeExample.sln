@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "基础(2、3、4章)", "基础(2、3、4章)\基础(2、3、4章).vcxproj", "{9A237338-6BCC-4D84-BBDC-24D32281E792}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "【基础1-4章】", "基础(2、3、4章)\基础(2、3、4章).vcxproj", "{9A237338-6BCC-4D84-BBDC-24D32281E792}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "专业（5.6.7章）", "专业（5.6.7章）\专业（5.6.7章）.vcxproj", "{22E47F80-DACC-41F2-A980-6C1E3D6562D0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "【专业5-7章】", "专业（5.6.7章）\专业（5.6.7章）.vcxproj", "{22E47F80-DACC-41F2-A980-6C1E3D6562D0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "[重点]第八章-指针", "[C语言重点]第八章-指针\[C语言重点]第八章-指针.vcxproj", "{3B8DF41E-C946-4F90-9651-A2B07EAECF23}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "专业（第七章）", "专业（第七章）\专业（第七章）.vcxproj", "{27EF447E-7015-4229-8D05-3B748BEC0349}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "【]第8章-指针】", "[C语言重点]第八章-指针\[C语言重点]第八章-指针.vcxproj", "{3B8DF41E-C946-4F90-9651-A2B07EAECF23}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GreedySnake", "GreedySnake\GreedySnake.vcxproj", "{A0F8754F-9348-4880-B49E-EE35C1E32BEA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "【第9章-文件】", "【第九章-文件】基础理论\【第九章-文件】基础理论.vcxproj", "{7B558669-90CA-411F-8CB0-95C0B68648D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,14 +45,6 @@ Global
 		{3B8DF41E-C946-4F90-9651-A2B07EAECF23}.Release|x64.Build.0 = Release|x64
 		{3B8DF41E-C946-4F90-9651-A2B07EAECF23}.Release|x86.ActiveCfg = Release|Win32
 		{3B8DF41E-C946-4F90-9651-A2B07EAECF23}.Release|x86.Build.0 = Release|Win32
-		{27EF447E-7015-4229-8D05-3B748BEC0349}.Debug|x64.ActiveCfg = Debug|x64
-		{27EF447E-7015-4229-8D05-3B748BEC0349}.Debug|x64.Build.0 = Debug|x64
-		{27EF447E-7015-4229-8D05-3B748BEC0349}.Debug|x86.ActiveCfg = Debug|Win32
-		{27EF447E-7015-4229-8D05-3B748BEC0349}.Debug|x86.Build.0 = Debug|Win32
-		{27EF447E-7015-4229-8D05-3B748BEC0349}.Release|x64.ActiveCfg = Release|x64
-		{27EF447E-7015-4229-8D05-3B748BEC0349}.Release|x64.Build.0 = Release|x64
-		{27EF447E-7015-4229-8D05-3B748BEC0349}.Release|x86.ActiveCfg = Release|Win32
-		{27EF447E-7015-4229-8D05-3B748BEC0349}.Release|x86.Build.0 = Release|Win32
 		{A0F8754F-9348-4880-B49E-EE35C1E32BEA}.Debug|x64.ActiveCfg = Debug|x64
 		{A0F8754F-9348-4880-B49E-EE35C1E32BEA}.Debug|x64.Build.0 = Debug|x64
 		{A0F8754F-9348-4880-B49E-EE35C1E32BEA}.Debug|x86.ActiveCfg = Debug|Win32
@@ -61,6 +53,14 @@ Global
 		{A0F8754F-9348-4880-B49E-EE35C1E32BEA}.Release|x64.Build.0 = Release|x64
 		{A0F8754F-9348-4880-B49E-EE35C1E32BEA}.Release|x86.ActiveCfg = Release|Win32
 		{A0F8754F-9348-4880-B49E-EE35C1E32BEA}.Release|x86.Build.0 = Release|Win32
+		{7B558669-90CA-411F-8CB0-95C0B68648D3}.Debug|x64.ActiveCfg = Debug|x64
+		{7B558669-90CA-411F-8CB0-95C0B68648D3}.Debug|x64.Build.0 = Debug|x64
+		{7B558669-90CA-411F-8CB0-95C0B68648D3}.Debug|x86.ActiveCfg = Debug|Win32
+		{7B558669-90CA-411F-8CB0-95C0B68648D3}.Debug|x86.Build.0 = Debug|Win32
+		{7B558669-90CA-411F-8CB0-95C0B68648D3}.Release|x64.ActiveCfg = Release|x64
+		{7B558669-90CA-411F-8CB0-95C0B68648D3}.Release|x64.Build.0 = Release|x64
+		{7B558669-90CA-411F-8CB0-95C0B68648D3}.Release|x86.ActiveCfg = Release|Win32
+		{7B558669-90CA-411F-8CB0-95C0B68648D3}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

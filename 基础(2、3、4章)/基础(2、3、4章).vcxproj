@@ -23,6 +23,7 @@
     <ProjectGuid>{9A237338-6BCC-4D84-BBDC-24D32281E792}</ProjectGuid>
     <RootNamespace>基础234章</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <ProjectName>【基础1-4章】</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

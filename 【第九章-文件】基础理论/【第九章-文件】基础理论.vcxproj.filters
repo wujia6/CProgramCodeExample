@@ -15,12 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="gameUtils.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="gameUtils.c">
+    <ClCompile Include="1-基础知识.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
