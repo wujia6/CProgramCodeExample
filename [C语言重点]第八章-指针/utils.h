@@ -3,16 +3,18 @@
 说明：自定义链表操作库
 ***********************/
 
-#pragma region 定义结构体
-typedef struct list_head
+#pragma region 定义节点（结构体）
+//链表(头节点)
+typedef struct list_header
 {
 	int size;
-	struct list_node *link;
+	struct list_node *header;
 } list;
 
+//节点
 typedef struct list_node
 {
-	int key;   //数据域
+	int key;   //数据域,索引、主键
 	char *message;
 	struct list_node *next; //指针域
 } node;

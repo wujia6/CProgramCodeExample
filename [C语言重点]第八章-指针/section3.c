@@ -1,70 +1,26 @@
 #include <stdio.h>
+#include <malloc.h>
 #include <string.h>
-#define P printf_s
-#define D "%d\n"
 
-//示例1
-int findCH(char *pstr)
+char *func_copy(char *dest, char *src)
 {
-	for (int i = 0; i < strlen(pstr); i++)
-	{
-		if (pstr[i] == 'k')
-			return 1;
-	}
-	return 0;
+	char *tmp = dest;
+	while (*tmp++ = *src++);
+	return dest;
 }
 
-//示例2
-void formatter()
+void func_strcopy(char *dest, char *src)
 {
-	char *pd = "%d\n", *pc = "%c\n", *ps = "%s\n", *px = "%x\n";
-	printf_s(pd, 10);
-	printf_s(pc, 'g');
-	printf_s(ps, "Hello World");
-	//printf_s(px, 10799772);
+	char *tmp = dest;
+	while (*tmp++ = *src++);
 }
 
-//示例3
-void strCopy(char *pstr1, char *pstr2)
+void main333()
 {
-	while (*pstr2++ = *pstr1++);
-}
+	char *src = "Hunan ShaoYang Hongxiang School",
+		*dest = (char*)malloc(sizeof(char) * 50);
+	puts(func_copy(dest, src));
 
-void main3333()
-{
-	//1.字符串指针定义
-	char str[] = "HongXiang School";
-	char *pstr; pstr = "C Program Diesgn";
-	char *string1 = "C Program Diesgn", *string2="HongXiang School";
-
-	/*for (int i = 0; i < strlen(str); i++)
-	{
-		printf_s("%c", pstr[i]);
-	}
-	puts("");*/
-	//puts(pstr);
-
-	//2.修改字符串指针
-	str[4] = 'k';
-	//string1[4] = 'k';
-	//puts(str);
-
-	//字符串指针代码示例
-	//【VS代码示例】在输入的字符串中查找有无‘k’字符。
-	//【VS代码示例】将指针变量指向一个格式字符串，并printf函数中使用格式字符串。
-	//【VS代码示例】要求把一个字符串的内容复制到另一个字符串中，字符串指针作为函数参数使用(不能使用sring.h函数库)。*/
-	//调用示例1
-	if (findCH(str))
-		puts("包含字符'k'");
-	else
-		puts("不包含字符'k'");
-	puts("");
-	//调用示例2
-	formatter();
-	puts("");
-	//调用示例3
-	strCopy(string1, string2);
-	puts(string2);
 	system("pause");
 }
 

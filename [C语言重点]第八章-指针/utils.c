@@ -4,6 +4,15 @@
 
 #pragma region 函数列表
 
+list *createLinks()
+{
+	list *pHeader = malloc(sizeof(list));
+	memset(pHeader, 0, sizeof(list));
+	pHeader->size = 0;
+	pHeader->header = NULL;
+	return pHeader;
+}
+
 //创建节点
 node *createNode(int key, char *msg)
 {
@@ -28,7 +37,7 @@ void appendNode(node *pHead, node *pNode)
 node *insertNode(node *pHead, node *pNode)
 {
 	int len = getLength(pHead);
-	if (pNode->key==1)	//1.插入到头部
+	if (pNode->key == 1)	//1.插入到头部
 	{
 		pHead->message = "普通节点";
 		pNode->next = pHead;

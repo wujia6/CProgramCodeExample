@@ -18,7 +18,7 @@ int main888()
 		node *pLink = createNode(i, "普通节点");
 		appendNode(pHead, pLink);
 	}
-	//displayNodes(pHead);
+	displayNodes(pHead);
 	#pragma endregion
 
 	puts("");
@@ -32,18 +32,18 @@ int main888()
 	puts("");
 
 	#pragma region 删除节点
-	if (removeNode(pHead, 11))
+	/*if (removeNode(pHead, 11))
 		puts("删除成功");
 	else
 		puts("删除失败");
-	displayNodes(pHead);
+	displayNodes(pHead);*/
 	#pragma endregion
 
 	puts("");
 
 	#pragma region 更新节点
-	printf_s("%s\n", updateNode(pHead, 5, "更新的普通节点") ? "更新成功" : "更新失败");
-	displayNodes(pHead);
+	/*printf_s("%s\n", updateNode(pHead, 5, "更新的普通节点") ? "更新成功" : "更新失败");
+	displayNodes(pHead);*/
 	#pragma endregion
 
 	system("pause");
