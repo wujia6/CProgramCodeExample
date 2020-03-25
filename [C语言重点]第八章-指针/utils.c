@@ -1,4 +1,3 @@
-#include <string.h>
 #include <stdlib.h>
 #include "utils.h"
 
@@ -6,76 +5,71 @@
 
 list *createLinks()
 {
-	list *pHeader = malloc(sizeof(list));
-	memset(pHeader, 0, sizeof(list));
-	pHeader->size = 0;
-	pHeader->header = NULL;
-	return pHeader;
+	list *linked = malloc(sizeof(list));
+	linked->size = 0;
+	linked->first = NULL;
+	for (int i = 1; i <= 10; i++)
+	{
+		addNode(linked, i, i == 1 ? "首元节点" : "普通节点");
+	}
+	return linked;
 }
 
 //创建节点
 node *createNode(int key, char *msg)
 {
-	node *pNode = (node*)malloc(sizeof(node));
-	memset(pNode, 0, sizeof(node));	//清空脏数据
-	pNode->key = key;
-	pNode->message = msg;
-	pNode->next = NULL;
-	return pNode;
+	node *entry = (node*)malloc(sizeof(node));
+	entry->key = key;
+	entry->message = msg;
+	entry->next = NULL;
+	return entry;
 }
 
-//追加节点
-void appendNode(node *pHead, node *pNode)
+//添加节点
+void addNode(list *linked, int key, char *msg)
 {
-	node *tmp = pHead;
-	while (tmp->next != NULL)
+	node *entry = createNode(key, msg);
+	node *tmp = linked->first;
+	if (!linked->first)
+	{
+		linked->first = entry;
+		return;
+	}
+	while (tmp->next)
+	{
 		tmp = tmp->next;
-	tmp->next = pNode;
+	}
+	tmp->next = entry;
+	linked->size++;
 }
 
 //插入节点
-node *insertNode(node *pHead, node *pNode)
+node *insertNode(list *linked, int index, node *entry)
 {
-	int len = getLength(pHead);
-	if (pNode->key == 1)	//1.插入到头部
+	if (entry->key == 1)	//1.插入到头部
 	{
-		pHead->message = "普通节点";
-		pNode->next = pHead;
-		pHead = pNode;
-		checkPrimaries(pHead);
+		linked->first->message = "普通节点";
+		entry->next = linked->first;
+		linked->first = entry;
 	}
-	else if (pNode->key > 1 && pNode->key < len)	//2.插入到中间
+	else if (index > 1 && index < linked->size)	//2.插入到中间
 	{
-		node *perv = findNode(pHead, pNode->key - 1);	//获取前驱节点
-		pNode->next = perv->next;
-		perv->next = pNode;
-		checkPrimaries(pHead);
+		node *perv = findNode(linked, entry->key - 1);	//获取前驱节点
+		entry->next = perv->next;
+		perv->next = entry;
 	}
 	else //3.插入到末端
 	{
-		node *last = findNode(pHead, len);
-		last->next = pNode;
+		node *last = findNode(linked, linked->size);
+		last->next = entry;
 	}
-	return pHead;
-}
-
-//获取链表长度
-int getLength(node *pHead)
-{
-	int count = 0;
-	node *tmp = pHead;
-	while (tmp != NULL)
-	{
-		tmp = tmp->next;
-		count++;
-	}
-	return count;
+	return linked;
 }
 
 //查找节点
-node *findNode(node *pHead, int index)
+node *findNode(list *linked, int index)
 {
-	node *tmp = pHead;
+	node *tmp = linked->first;
 	while (tmp != NULL)
 	{
 		if (tmp->key == index)
@@ -86,9 +80,9 @@ node *findNode(node *pHead, int index)
 }
 
 //打印链表
-void displayNodes(node *pHead)
+void displayNodes(list *linked)
 {
-	node *tmp = pHead;
+	node *tmp = linked->first;
 	while (tmp != NULL)
 	{
 		printf_s("key:%d,message:%s\n", tmp->key, tmp->message);
@@ -97,10 +91,10 @@ void displayNodes(node *pHead)
 }
 
 //维护主键（key）
-void checkPrimaries(node *pHead)
+void checkPrimaries(list *linked)
 {
 	int index = 1;
-	node *tmp = pHead;
+	node *tmp = linked->first;
 	while (tmp != NULL)
 	{
 		tmp->key = index;
@@ -110,9 +104,9 @@ void checkPrimaries(node *pHead)
 }
 
 //删除节点
-int removeNode(node *pHead, int index)
+int removeNode(list *linked, int index)
 {
-	node *del, *perv = findNode(pHead, index - 1);
+	node *del, *perv = findNode(linked, index - 1);
 	if (perv == NULL)
 		return 0;
 	del = perv->next;
@@ -122,11 +116,12 @@ int removeNode(node *pHead, int index)
 }
 
 //更新节点
-int updateNode(node *pHead, int index, char *msg)
+int updateNode(list *linked, int index, int key, char *msg)
 {
-	node *tmp = findNode(pHead, index);
+	node *tmp = findNode(linked, index);
 	if (tmp == NULL)
 		return 0;
+	tmp->key = key;
 	tmp->message = msg;
 	return 1;
 }

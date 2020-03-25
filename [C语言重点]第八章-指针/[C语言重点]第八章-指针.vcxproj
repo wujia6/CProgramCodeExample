@@ -124,6 +124,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="empUtils.c" />
+    <ClCompile Include="empUtils.h" />
     <ClCompile Include="section1.c" />
     <ClCompile Include="section2.c" />
     <ClCompile Include="section3.c" />

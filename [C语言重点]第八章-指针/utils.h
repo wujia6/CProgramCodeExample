@@ -8,7 +8,7 @@
 typedef struct list_header
 {
 	int size;
-	struct list_node *header;
+	struct list_node *first;
 } list;
 
 //节点
@@ -40,7 +40,7 @@ int getLength(node *);
 //param:node*链表头指针
 //param:node*追加节点指针
 //reutrn:void
-void appendNode(node *, node *);
+void addNode(list *, int, char *);
 
 //插入节点
 //@param:链表头指针
@@ -65,7 +65,7 @@ int removeNode(node *, int);
 //@param:key节点编号
 //@param:更新消息
 //@return:*message
-int updateNode(node *, int, char *);
+int updateNode(node *, int, int, char *);
 
 //打印链表节点
 //@param:pHead链表头指针
