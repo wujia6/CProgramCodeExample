@@ -15,25 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="section1.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="section2.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="section3.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="section4.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="section5.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="section6.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="section7.c">
+    <ClCompile Include="main.c">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="utils.c">

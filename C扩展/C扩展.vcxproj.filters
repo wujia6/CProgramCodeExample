@@ -21,9 +21,18 @@
     <ClCompile Include="myUtils.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="双链表.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="listUtils.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="myUtils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="listUtils.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

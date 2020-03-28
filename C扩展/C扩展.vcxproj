@@ -19,10 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="listUtils.c" />
     <ClCompile Include="myUtils.c" />
+    <ClCompile Include="双链表.c" />
     <ClCompile Include="多级指针.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="listUtils.h" />
     <ClInclude Include="myUtils.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
