@@ -18,5 +18,8 @@
     <ClCompile Include="1-基础知识.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="2-文件读写.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
