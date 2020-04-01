@@ -17,7 +17,7 @@ typedef struct classes
 	int clsId;
 	char *clsName;
 	int total;
-	struct student *header;
+	struct student *first;
 } classes;
 #pragma endregion
 
@@ -57,7 +57,7 @@ void showList(classes *cls);
 //@param index 查询位置
 //@param stuId 学生ID
 //return sutdent
-student *getStudent(classes *cls, int index, int stuId);
+student *findBy(classes *cls, int index, int stuId);
 
 //链表初始化
 //return classes

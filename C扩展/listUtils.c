@@ -9,7 +9,7 @@ classes *initClasses()
 	cls->clsId = 1702;
 	cls->clsName = "火箭班";
 	cls->total = 0;
-	cls->header = NULL;
+	cls->first = NULL;
 	return cls;
 }
 
@@ -25,9 +25,23 @@ student *createStudent(int stuId, char *stuName, int gender, int age)
 	return stu;
 }
 
+student *findBy(classes *cls, int index, int stuId)
+{
+	if (cls == NULL) return NULL;
+	student *inf = cls->first;
+	for (int i = 1; i <= cls->total; i++, inf = inf->next)
+	{
+		if (index == i)
+			return inf;
+		if (!index && inf->stuId == stuId)
+			return inf;
+	}
+	return NULL;
+}
+
 void showList(classes * cls)
 {
-	student *tmp = cls->header;
+	student *tmp = cls->first;
 	for (int i = 0; i < cls->total; i++, tmp = tmp->next)
 	{
 		printf_s("stuId:%d,stuName:%s,gender:%s,age:%d\n", tmp->stuId, tmp->stuName, tmp->gender ? "男" : "女", tmp->age);
@@ -37,13 +51,13 @@ void showList(classes * cls)
 void addTo(classes *cls, student *info)
 {
 	if (cls == NULL || info == NULL) return;
-	if (cls->header == NULL)
+	if (cls->first == NULL)
 	{
-		cls->header = info;
+		cls->first = info;
 		cls->total++;
 		return;
 	}
-	student *tmp = cls->header;
+	student *tmp = cls->first;
 	while (tmp->next)
 	{
 		tmp = tmp->next;
@@ -56,11 +70,11 @@ void addTo(classes *cls, student *info)
 int insertTo(classes *cls, int index, student *info)
 {
 	if (cls == NULL || index == 0 || info == NULL) return 0;
-	student *curr = getStudent(cls, index, 0);
+	student *curr = findBy(cls, index, 0);
 	if (index == 1)		//首元节点
 	{
 		info->next = curr;
-		cls->header = curr->before = info;
+		cls->first = curr->before = info;
 	}
 	else if (index > 1 && index < cls->total)	//中间节点
 	{
@@ -83,11 +97,11 @@ int insertTo(classes *cls, int index, student *info)
 int deleteAt(classes *cls, int stuId)
 {
 	if (cls == NULL || stuId == 0) return 0;
-	student *del = getStudent(cls, 0, stuId);
+	student *del = findBy(cls, 0, stuId);
 	if (del->before == NULL)	//首元节点
 	{
 		del->next->before = NULL;
-		cls->header = del->next;
+		cls->first = del->next;
 	}
 	else	//其他节点
 	{
@@ -95,37 +109,25 @@ int deleteAt(classes *cls, int stuId)
 		del->before->next = del->next;
 	}
 	free(del);
+	cls->total--;
 	return 1;
 }
 
 int updateTo(classes *cls, student *info)
 {
 	if (cls == NULL || info == NULL) return 0;
-	student *replace = getStudent(cls, 0, info->stuId);
-	if (replace == NULL) return 0;
-	info->next = replace->next;
-	if (replace->before == NULL)	//首元节点
-		cls->header = info;
+	student *rep = findBy(cls, 0, info->stuId);
+	if (rep == NULL) return 0;
+	info->next = rep->next;
+	if (rep->before == NULL)	//首元节点
+		cls->first = info;
 	else
 	{
-		info->before = replace->before;
-		replace->before->next = info;
+		info->before = rep->before;
+		rep->before->next = info;
 	}
-	free(replace);
+	free(rep);
 	return 1;
 }
 
-student *getStudent(classes *cls, int index, int stuId)
-{
-	if (cls == NULL) return NULL;
-	student *inf = cls->header;
-	for (int i = 1; i <= cls->total; i++, inf = inf->next)
-	{
-		if (index == i)
-			return inf;
-		if (!index && inf->stuId == stuId)
-			return inf;
-	}
-	return NULL;
-}
 #pragma endregion

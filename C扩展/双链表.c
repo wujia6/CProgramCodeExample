@@ -4,11 +4,8 @@
 
 int main()
 {
-	#pragma region 创建双链表
-	puts("====================创建双链表======================");
-	//创建链表，添加节点
+	//创建链表
 	classes *cls = initClasses();
-	#pragma endregion
 
 	#pragma region 添加节点
 	puts("====================添加节点======================");
@@ -17,17 +14,21 @@ int main()
 		student *info = createStudent(i + 1, "学生", 1, 20 + i);
 		addTo(cls, info);
 	}
-	showlist(cls);
+	showList(cls);
 	#pragma endregion
 
-	#pragma region 插入节点
-	puts("====================插入节点======================");
-	student *info = createStudent(6, "插班生", 1, 19);
-	if (insertTo(cls,5,info))
+	puts("====================删除节点======================");
+	if (deleteAt(cls, 3))
 	{
-		showlist(cls);
+		showList(cls);
 	}
-	#pragma endregion
+
+	puts("====================更新节点======================");
+	student *inf = createStudent(2, "更新的学生", 0, 18);
+	if (updateTo(cls, inf))
+	{
+		showList(cls);
+	}
 
 	system("pause");
 	return 0;
