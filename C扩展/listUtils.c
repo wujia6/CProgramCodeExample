@@ -2,169 +2,87 @@
 #include <malloc.h>
 #include "listUtils.h"
 
-#pragma region 单链表操作函数
-//初始化部门(头节点)
-depart * initDepart(int depId, char *depName)
+#pragma region 双链表函数
+classes *initClasses()
 {
-	depart *dep = malloc(sizeof(depart));
-	dep->depId = depId;
-	dep->depName = depName;
-	dep->peoples = 0;
-	dep->first = NULL;
-	return dep;
+	classes *cls = (classes *)malloc(sizeof(classes));
+	cls->clsId = 1702;
+	cls->clsName = "火箭班";
+	cls->total = 0;
+	cls->header = NULL;
+	return cls;
 }
 
-//创建员工节点
-employee * createEntrys(int empId, char * name, int gender, int age)
+student *createStudent(int stuId, char *stuName, int gender, int age)
 {
-	employee *emp = malloc(sizeof(employee));
-	emp->empId = empId;
-	emp->empName = name;
-	emp->gender = gender;
-	emp->age = age;
-	emp->next = NULL;
-	return emp;
+	student *stu = (student *)malloc(sizeof(student));
+	stu->stuId = stuId;
+	stu->stuName = stuName;
+	stu->gender = gender;
+	stu->age = age;
+	stu->before = NULL;
+	stu->next = NULL;
+	return stu;
 }
 
-//添加节点
-void appendAt(depart * dep, employee * entry)
+void showList(classes * cls)
 {
-	employee *emp = dep->first;
-	if (emp != NULL)
+	student *tmp = cls->header;
+	for (int i = 0; i < cls->total; i++, tmp = tmp->next)
 	{
-		while (emp->next != NULL)
-		{
-			emp = emp->next;
-		}
-		emp->next = entry;
-	}
-	else
-		dep->first = entry;
-	dep->peoples++;
-}
-
-//编辑员工节点
-int editTo(depart * dep, employee * entry)
-{
-	employee *front = searchBy(dep, entry->empId),
-		*old = front->next;
-	if (old == NULL)
-		return 0;
-	entry->next = old->next;
-	front->next = entry;
-	free(old);
-	return 1;
-}
-
-//打印链表
-void displayAlls(depart *dep)
-{
-	employee *tmp = dep->first;
-	for (int i = 0; i < dep->peoples; i++, tmp = tmp->next)
-	{
-		printf_s("empId:%d,empName:%s,gender:%s,age:%d\n", tmp->empId, tmp->empName, tmp->gender ? "女" : "男", tmp->age);
+		printf_s("stuId:%d,stuName:%s,gender:%s,age:%d\n", tmp->stuId, tmp->stuName, tmp->gender ? "男" : "女", tmp->age);
 	}
 }
 
-//查找
-employee *searchBy(depart * dep, int index)
-{
-	if (dep == NULL)
-		return NULL;
-	employee *emp = dep->first;
-	for (int i = 1; i <= dep->peoples; i++, emp = emp->next)
-	{
-		if (index == i)
-			return emp;
-	}
-	return NULL;
-}
-
-//插入节点
-int insertAt(depart *dep, int index, employee *entry)
-{
-	//1.判断插入位置
-	//2.插入
-	if (dep == NULL)
-		return 0;
-	else if (index == 1)	//插入到头部
-	{
-		entry->next = dep->first;
-		dep->first = entry;
-	}
-	else if (index > 1 && index < dep->peoples)	//插入到中间
-	{
-		employee *before = searchBy(dep, index - 1);
-		entry->next = before->next;
-		before->next = entry;
-	}
-	else	//插入到末端
-	{
-		employee *last = searchBy(dep, dep->peoples);
-		last->next = entry;
-	}
-	return 1;
-}
-
-//删除节点
-int removeBy(depart *dep, int empId)
-{
-	if (dep == NULL)
-		return 0;
-	employee *del, *tmp = dep->first;
-	while (tmp->next)
-	{
-		if (tmp->next->empId == empId)
-			break;
-		tmp = tmp->next;
-	}
-	del = tmp->next;
-	tmp->next = del->next;
-	free(del);
-	return 1;
-}
-#pragma endregion
-
-#pragma region 双链表操作函数
 void addTo(classes *cls, student *info)
 {
-	if (cls == NULL || info == NULL)
+	if (cls == NULL || info == NULL) return;
+	if (cls->header == NULL)
+	{
+		cls->header = info;
+		cls->total++;
 		return;
+	}
 	student *tmp = cls->header;
-	while (tmp)
+	while (tmp->next)
+	{
 		tmp = tmp->next;
-	if (tmp != NULL)
-		info->before = tmp;
+	}
+	info->before = tmp;
 	tmp->next = info;
 	cls->total++;
 }
 
 int insertTo(classes *cls, int index, student *info)
 {
-	if (cls == NULL || info == NULL) return 0;
-	student *ps = getStudent(cls, index, 0);
-	if (index == 1)	//首元节点
+	if (cls == NULL || index == 0 || info == NULL) return 0;
+	student *curr = getStudent(cls, index, 0);
+	if (index == 1)		//首元节点
 	{
-		info->next = ps;
-		cls->header = info;
+		info->next = curr;
+		cls->header = curr->before = info;
 	}
 	else if (index > 1 && index < cls->total)	//中间节点
 	{
-		info->next = ps;
-		info->before = ps->before;
-		ps->before = info;
+		//新节点与前驱节点建立双层链接
+		info->before = curr->before;
+		curr->before->next = info;
+		//新节点与后继节点建立双层链接
+		curr->before = info;
+		info->next = curr;
 	}
 	else	//末端节点
 	{
-		ps->next = info;
-		info->before = ps;
+		curr->next = info;
+		info->before = curr;
 	}
+	cls->total++;
 	return 1;
 }
 
 int deleteAt(classes *cls, int stuId)
 {
-	if (cls == NULL) return 0;
+	if (cls == NULL || stuId == 0) return 0;
 	student *del = getStudent(cls, 0, stuId);
 	if (del->before == NULL)	//首元节点
 	{
@@ -197,21 +115,11 @@ int updateTo(classes *cls, student *info)
 	return 1;
 }
 
-void showlist(classes * cls)
-{
-	student *tmp = cls->header;
-	for (int i = 0; i < cls->total; i++, tmp = tmp->next)
-	{
-		printf_s("stuId:%d,stuName:%s,gender:%s,age:%d\n", tmp->stuId, tmp->stuName, tmp->gender ? "男" : "女", tmp->age);
-	}
-}
-
 student *getStudent(classes *cls, int index, int stuId)
 {
-	if (cls == NULL)
-		return NULL;
+	if (cls == NULL) return NULL;
 	student *inf = cls->header;
-	for (int i = 0; i < cls->total; i++, inf = inf->next)
+	for (int i = 1; i <= cls->total; i++, inf = inf->next)
 	{
 		if (index == i)
 			return inf;
@@ -219,27 +127,5 @@ student *getStudent(classes *cls, int index, int stuId)
 			return inf;
 	}
 	return NULL;
-}
-
-classes *initClass()
-{
-	classes *cls = (classes *)malloc(sizeof(classes));
-	cls->clsId = 1702;
-	cls->clsName = "火箭班";
-	cls->total = 0;
-	cls->header = NULL;
-	return cls;
-}
-
-student *initStudent(int stuId, char *stuName, int gender, int age)
-{
-	student *stu = (student *)malloc(sizeof(student));
-	stu->stuId = stuId;
-	stu->stuName = stuName;
-	stu->gender = gender;
-	stu->age = age;
-	stu->before = NULL;
-	stu->next = NULL;
-	return stu;
 }
 #pragma endregion

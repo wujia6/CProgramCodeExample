@@ -21,10 +21,10 @@
     <ClCompile Include="myUtils.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="双链表.c">
+    <ClCompile Include="listUtils.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="listUtils.c">
+    <ClCompile Include="双链表.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

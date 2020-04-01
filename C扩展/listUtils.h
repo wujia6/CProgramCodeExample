@@ -1,23 +1,6 @@
+
 #pragma region 定义节点
-//员工结构体
-typedef struct _employee
-{
-	int empId;
-	char *empName;
-	int gender;
-	int age;
-	struct _employee *next;
-} employee;
-
-//部门结构体
-typedef struct _depart
-{
-	int depId;
-	char *depName;
-	int peoples;
-	struct _employee *first;
-} depart;
-
+//学生结构体
 typedef struct student
 {
 	int stuId;
@@ -28,6 +11,7 @@ typedef struct student
 	struct student *next;
 } student;
 
+//班级结构体
 typedef struct classes
 {
 	int clsId;
@@ -35,43 +19,57 @@ typedef struct classes
 	int total;
 	struct student *header;
 } classes;
-
-#pragma endregion
-
-#pragma region 单链表函数原型
-depart *initDepart(int depId, char *depName);
-
-employee *createEntrys(int empId, char *empName, int gender, int age);
-
-void displayAlls(depart *dep);
-
-employee *searchBy(depart *dep, int empId);
-
-void appendAt(depart *dep, employee *entry);
-
-int insertAt(depart *dep, int index, employee *entry);
-
-int removeBy(depart *dep, int empId);
-
-int editTo(depart *dep, employee *entry);
 #pragma endregion
 
 #pragma region 双链表函数原型
+//添加学生节点
+//@param cls 链表头指针
+//@param info 新节点指针
+//return void
 void addTo(classes *cls, student *info);
 
+//插入学生节点
+//@param cls 链表头指针
+//@param index 插入位置
+//@param info 新节点指针
+//return int
 int insertTo(classes *cls, int index, student *info);
 
+//删除节点
+//@param cls 链表头指针
+//@param stuId 学生ID
+//return void
 int deleteAt(classes *cls, int stuId);
 
+//更新节点
+//@param cls 链表头指针
+//@param info 节点指针
+//return int
 int updateTo(classes *cls, student *info);
 
-void showlist(classes *cls);
+//打印链表
+//@param cls 链表头指针
+//return void
+void showList(classes *cls);
 
+//查询节点
+//@param cls 链表头指针
+//@param index 查询位置
+//@param stuId 学生ID
+//return sutdent
 student *getStudent(classes *cls, int index, int stuId);
 
-classes *initClass();
+//链表初始化
+//return classes
+classes *initClasses();
 
-student *initStudent(int stuId, char *stuName, int gender, int age);
+//创建学生节点
+//@param stuId
+//@param stuName
+//@param gender
+//@param age
+//return student
+student *createStudent(int stuId, char *stuName, int gender, int age);
 #pragma endregion
 
 
