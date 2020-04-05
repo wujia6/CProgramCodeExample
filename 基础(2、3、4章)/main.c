@@ -34,7 +34,7 @@ void main()
 	P(C, CH);
 	P(F, price);*/
 
-	int sum = 2;
+	/*int sum = 2;
 	if (sum == 0)
 	{
 		sum++;
@@ -47,7 +47,15 @@ void main()
 	{
 		sum += 10;
 	}
-	P(D, sum);
+	P(D, sum);*/
+
+	int a[5], m = 10, k = 8;
+	for (int i = 0; m > 0;)
+	{
+		a[i] = m % k;
+		printf_s("i=%d\tm=%0x=%d\tk=%0x=%d\ta[i]=%0x=%d\n", i, &m,m, &k,k, &a[i],a[i]);
+		i++;
+	}
 
 	system("pause");
 }
