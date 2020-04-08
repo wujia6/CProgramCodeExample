@@ -20,7 +20,7 @@ int main()
 	#pragma region 插入节点
 	puts("====================插入节点======================");
 	student *info = createStudent(6, "插班生", 1, 19);
-	if (insertTo(cls,5,info))
+	if (insertTo(cls,6,info))
 	{
 		showList(cls);
 	}
@@ -28,19 +28,18 @@ int main()
 
 	#pragma region 更新节点
 	puts("====================更新节点======================");
-	student *inf = createStudent(2, "更新", 1, 19);
-	if (updateTo(cls, inf))
+	student *entry = createStudent(1, "更新学生", 0, 18);
+	if (updateTo(cls,entry))
 	{
 		showList(cls);
 	}
 	#pragma endregion
 
 	#pragma region 删除节点
-	puts("====================删除节点======================");
-	if (deleteAt(cls, 4))
-	{
-		showList(cls);
-	}
+	char *msg = deleteAt(cls,5) ? "删除成功" : "节点不存在";
+	puts(msg);
+	puts("");
+	showList(cls);
 	#pragma endregion
 
 	system("pause");

@@ -2,19 +2,19 @@
 #include <malloc.h>
 #include "myUtils.h"
 
-void funcB(int *tmp)
+void funcB(int tmp)
 {
-	*tmp = 100;
+	tmp = 100;
 }
 
 void funcA()
 {
 	int tmp = 20, *p = &tmp;
-	funcB(p);
-	printf_s("%d\n", *p);
+	funcB(tmp);
+	printf_s("%d\n", tmp);
 }
 
-int main0()
+int main1()
 {
 	#pragma region 多级指针原理
 	

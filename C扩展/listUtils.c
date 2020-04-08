@@ -7,12 +7,14 @@ student * findBy(classes * cls, int index, int stuId)
 {
 	if (cls == NULL)
 		return NULL;
+	if (index > cls->total)
+		index = cls->total;
 	student *inf = cls->first;
 	for (int i = 1; i <= cls->total; i++, inf=inf->next)
 	{
-		if (index == i)
+		if (index > 0 && index == i)
 			return inf;
-		if (!index && inf->stuId == stuId)
+		if (inf->stuId == stuId)
 			return inf;
 	}
 	return NULL;
@@ -42,14 +44,21 @@ student *createStudent(int stuId, char *stuName, int gender, int age)
 
 int updateTo(classes * cls, student * info)
 {
-	if (cls == NULL || info == NULL) return 0;
+	if (cls==NULL || info==NULL)
+		return 0;
 	student *rep = findBy(cls, 0, info->stuId);
-	info->next = rep->next;
-	if (rep->before == NULL)
-		cls->first = info;
-	else 
+	if (rep->before == NULL)	//更新首元节点
 	{
-		info->next->before = info;
+		info->next = rep->next;
+		rep->next->before = info;
+		cls->first = info;
+	}
+	else
+	{
+		//新节点与后继节点建立双链接
+		info->next = rep->next;
+		rep->next->before = info;
+		//新节点与前驱节点建立双链接
 		info->before = rep->before;
 		rep->before->next = info;
 	}
@@ -95,7 +104,7 @@ int insertTo(classes * cls, int index, student * info)
 		info->next = curr;
 		cls->first = curr->before = info;
 	}
-	else if (index > 1 && index < cls->total)
+	else if (index > 1 && index <= cls->total)
 	{
 		//新节点与前驱节点建立链接
 		info->before = curr->before;
@@ -115,21 +124,21 @@ int insertTo(classes * cls, int index, student * info)
 
 int deleteAt(classes * cls, int stuId)
 {
-	if (cls == NULL || stuId == 0) return 0;
+	if (cls == NULL || stuId <= 0)
+		return 0;
 	student *del = findBy(cls, 0, stuId);
-	if (del->before==NULL)
+	if (del->before == NULL)		//判断是否删除首元节点
 	{
 		del->next->before = NULL;
 		cls->first = del->next;
 	}
-	else
+	else	//删除其他节点
 	{
-		del->next->before = del->before;
 		del->before->next = del->next;
+		del->next->before = del->before;
 	}
 	free(del);
 	cls->total--;
 	return 1;
 }
-
 #pragma endregion

@@ -49,6 +49,7 @@ void main()
 	}
 	P(D, sum);*/
 
+	//¶ÑÕ»
 	int a[5], m = 10, k = 8;
 	for (int i = 0; m > 0;)
 	{
