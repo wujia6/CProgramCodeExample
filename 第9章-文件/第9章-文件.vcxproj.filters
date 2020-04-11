@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="文件读写.c">
+    <ClCompile Include="文件基本操作.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="文件打开关闭.c">
+    <ClCompile Include="..\..\..\..\..\VSCode-workspance\Code Example\start.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
