@@ -18,7 +18,7 @@
     <ClCompile Include="文件基本操作.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\VSCode-workspance\Code Example\start.c">
+    <ClCompile Include="..\..\..\..\..\VSCode-workspance\C Example\start.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
