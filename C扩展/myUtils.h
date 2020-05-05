@@ -1,29 +1,34 @@
 #include <malloc.h>
 
-#pragma region 定义节点类型
+#pragma region 节点
 //普通节点
-typedef struct list_node
+typedef struct listNode
 {
 	int key;
 	char *message;
-	struct list_node *next;
+	struct listNode *next;
 } node;
 
 //头节点（链表）
 typedef struct list
 {
 	int len;
-	struct list_node *header;
+	node *first;
 } list;
 #pragma endregion
 
 #pragma region 函数原型
-
 node *createNode(int, char *);
+
+int ptr_addNode(list *, int, char *);
 
 int addNode(list *, int, char *);
 
-void display(list *);
+node *findBy(list *, int);
+
+int insertNode(list *, int, node *);
+
+void ptr_display(list *);
 #pragma endregion
 
 

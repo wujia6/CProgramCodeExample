@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "listUtils.h"
 
-int main()
+int main00()
 {
 	//´´½¨Á´±í
 	classes *cls = initClasses();
