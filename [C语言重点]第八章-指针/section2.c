@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void mainwww()
+void main()
 {
 	#pragma region 基础知识
 	//1.数组首地址
@@ -23,6 +23,7 @@ void mainwww()
 		{
 			int value1 = *(*(arr + i) + j);	//标准方式
 			int value2 = *(arr[i] + j);	//降维方式
+			//int value3 = arr[i][j];
 			printf_s("地址：%x\n值：%d\n", arr + i + j, value1);
 		}
 	}

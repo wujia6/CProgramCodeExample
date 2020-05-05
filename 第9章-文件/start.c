@@ -19,7 +19,7 @@ int fileCopy_binary(char *, char *);
 int formatterIO(char *);
 void randomReader(char *, int);
 
-int main()
+int main111()
 {
     //从键盘输入若干个字符，同时把这些字符输出到 D 盘根目录下的文件 data_file.txt 中及屏幕上
     //file_character("e:/demo/exp1.txt");
